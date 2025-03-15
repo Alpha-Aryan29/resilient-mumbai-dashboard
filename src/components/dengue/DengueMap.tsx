@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -48,6 +48,7 @@ const dengueData = [
 const DengueMapComponent = () => {
   const [timeRange, setTimeRange] = useState<'week' | 'month'>('week');
   const [severityFilter, setSeverityFilter] = useState("all");
+  const [map, setMap] = useState<L.Map | null>(null);
   
   // Mumbai center coordinates
   const position: [number, number] = [19.076, 72.877]; 
@@ -77,6 +78,13 @@ const DengueMapComponent = () => {
         return new L.Icon.Default();
     }
   };
+
+  // Update map view when it's initialized
+  useEffect(() => {
+    if (map) {
+      map.setView(position, 12);
+    }
+  }, [map, position]);
 
   return (
     <Card className="border shadow-sm">
@@ -110,12 +118,11 @@ const DengueMapComponent = () => {
           <div className="h-[500px] w-full relative">
             <MapContainer 
               className="h-full w-full"
+              center={position}
               zoom={12} 
               zoomControl={false}
               scrollWheelZoom={true}
-              whenCreated={(mapInstance) => {
-                mapInstance.setView(position, 12);
-              }}
+              ref={setMap}
             >
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -123,27 +130,30 @@ const DengueMapComponent = () => {
               />
               <ZoomControl position="topleft" />
               
-              {filteredData.map((spot, index) => (
-                <Marker 
-                  key={index} 
-                  position={[spot.lat, spot.lng]}
-                  icon={getMarkerIcon(spot.severity) as L.DivIcon}
-                >
-                  <Popup>
-                    <div className="p-1">
-                      <h3 className="font-medium">{spot.area}</h3>
-                      <p className="text-sm">Cases: {spot.cases}</p>
-                      <p className={`text-sm capitalize font-medium ${
-                        spot.severity === 'high' ? 'text-red-600' : 
-                        spot.severity === 'medium' ? 'text-amber-600' : 
-                        'text-green-600'
-                      }`}>
-                        {spot.severity} risk
-                      </p>
-                    </div>
-                  </Popup>
-                </Marker>
-              ))}
+              {filteredData.map((spot, index) => {
+                const iconInstance = getMarkerIcon(spot.severity);
+                return (
+                  <Marker 
+                    key={index} 
+                    position={[spot.lat, spot.lng]}
+                    icon={iconInstance}
+                  >
+                    <Popup>
+                      <div className="p-1">
+                        <h3 className="font-medium">{spot.area}</h3>
+                        <p className="text-sm">Cases: {spot.cases}</p>
+                        <p className={`text-sm capitalize font-medium ${
+                          spot.severity === 'high' ? 'text-red-600' : 
+                          spot.severity === 'medium' ? 'text-amber-600' : 
+                          'text-green-600'
+                        }`}>
+                          {spot.severity} risk
+                        </p>
+                      </div>
+                    </Popup>
+                  </Marker>
+                );
+              })}
             </MapContainer>
           </div>
         </div>
