@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import DengueMap from "./pages/DengueMap";
 import CommunityForum from "./pages/CommunityForum";
+import MentalHealth from "./pages/MentalHealth";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dengue-map" element={<DengueMap />} />
           <Route path="/community-forum" element={<CommunityForum />} />
+          <Route path="/mental-health" element={<MentalHealth />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
