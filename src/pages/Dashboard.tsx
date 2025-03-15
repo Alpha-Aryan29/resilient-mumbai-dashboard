@@ -48,7 +48,6 @@ const Dashboard = () => {
         <Tabs defaultValue="overview" className="mb-8">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="pollution">Pollution</TabsTrigger>
             <TabsTrigger value="dengue">Dengue</TabsTrigger>
             <TabsTrigger value="mental">Mental Health</TabsTrigger>
           </TabsList>
@@ -60,14 +59,6 @@ const Dashboard = () => {
               <div>
                 <RecentAlerts />
               </div>
-            </div>
-          </TabsContent>
-          <TabsContent value="pollution" className="pt-4">
-            <div className="glass-card p-8 text-center">
-              <h3 className="text-xl font-semibold mb-2">Pollution Data View</h3>
-              <p className="text-muted-foreground">
-                Detailed pollution analysis will be available in the next update.
-              </p>
             </div>
           </TabsContent>
           <TabsContent value="dengue" className="pt-4">
