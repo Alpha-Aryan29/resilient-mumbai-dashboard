@@ -109,14 +109,17 @@ const DengueMapComponent = () => {
         <div className="overflow-hidden rounded-md">
           <div className="h-[500px] w-full relative">
             <MapContainer 
-              center={position} 
+              className="h-full w-full"
               zoom={12} 
-              style={{ height: '100%', width: '100%' }}
               zoomControl={false}
+              scrollWheelZoom={true}
+              whenCreated={(mapInstance) => {
+                mapInstance.setView(position, 12);
+              }}
             >
               <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
               <ZoomControl position="topleft" />
               
@@ -124,7 +127,7 @@ const DengueMapComponent = () => {
                 <Marker 
                   key={index} 
                   position={[spot.lat, spot.lng]}
-                  icon={getMarkerIcon(spot.severity)}
+                  icon={getMarkerIcon(spot.severity) as L.DivIcon}
                 >
                   <Popup>
                     <div className="p-1">
