@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Shield, Heart, Mask, DropletPlus } from "lucide-react";
+import { Shield, Heart, AlertTriangle, Droplets } from "lucide-react";
 
 const tips = [
   {
@@ -24,13 +24,13 @@ const tips = [
     color: "bg-green-100 text-green-600 dark:bg-green-900/20 dark:text-green-400",
   },
   {
-    icon: <Mask className="h-5 w-5" />,
+    icon: <AlertTriangle className="h-5 w-5" />,
     title: "Dengue Prevention",
     description: "Eliminate standing water sources around your home.",
     color: "bg-red-100 text-red-600 dark:bg-red-900/20 dark:text-red-400",
   },
   {
-    icon: <DropletPlus className="h-5 w-5" />,
+    icon: <Droplets className="h-5 w-5" />,
     title: "Hydration",
     description: "Increase water intake during high temperature days.",
     color: "bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400",

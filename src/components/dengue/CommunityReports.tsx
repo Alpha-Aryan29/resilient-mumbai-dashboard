@@ -11,7 +11,7 @@ const reports = [
     location: "Dadar West",
     details: "Standing water in construction site near Dadar station",
     dateReported: "Today, 10:30 AM",
-    status: "pending",
+    status: "pending" as const,
     upvotes: 12,
   },
   {
@@ -19,7 +19,7 @@ const reports = [
     location: "Andheri East",
     details: "Multiple dengue cases reported in apartment complex",
     dateReported: "Yesterday, 2:15 PM",
-    status: "investigating",
+    status: "investigating" as const,
     upvotes: 34,
   },
   {
@@ -27,7 +27,7 @@ const reports = [
     location: "Bandra Kurla Complex",
     details: "Mosquito breeding near drainage area",
     dateReported: "2 days ago",
-    status: "resolved",
+    status: "resolved" as const,
     upvotes: 8,
   },
   {
@@ -35,7 +35,7 @@ const reports = [
     location: "Powai",
     details: "Stagnant water in empty lots near lake",
     dateReported: "1 week ago",
-    status: "resolved",
+    status: "resolved" as const,
     upvotes: 22,
   },
 ];
