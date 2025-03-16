@@ -1,8 +1,8 @@
 
 import React from "react";
 import Layout from "@/components/layout/Layout";
-import { PageContainer } from "@/components/layout/PageContainer";
-import { VoiceAssistant } from "@/components/mental-health/VoiceAssistant";
+import PageContainer from "@/components/layout/PageContainer";
+import VoiceAssistant from "@/components/mental-health/VoiceAssistant";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageCircle, PhoneCall, Calendar, Heart, RefreshCcw } from "lucide-react";

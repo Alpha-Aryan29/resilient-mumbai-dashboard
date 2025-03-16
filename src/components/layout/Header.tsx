@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Menu, X, Map, Activity, MessageCircle, Shield, Bell, Users } from "lucide-react";
+import { Menu, X, Map, Activity, MessageCircle, Bell, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -34,7 +33,6 @@ const Header = () => {
     { name: "Dengue Map", path: "/dengue-map", icon: <Map className="h-4 w-4 mr-2" /> },
     { name: "Community", path: "/community-forum", icon: <Users className="h-4 w-4 mr-2" /> },
     { name: "Mental Health", path: "/mental-health", icon: <MessageCircle className="h-4 w-4 mr-2" /> },
-    { name: "Pollution", path: "/pollution", icon: <Shield className="h-4 w-4 mr-2" /> },
   ];
 
   return (
