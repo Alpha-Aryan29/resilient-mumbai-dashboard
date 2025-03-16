@@ -118,10 +118,11 @@ const DengueMapComponent = () => {
           <div className="h-[500px] w-full relative">
             <MapContainer 
               className="h-full w-full"
-              whenCreated={setMap}
+              center={position}
               zoom={12} 
               zoomControl={false}
               scrollWheelZoom={true}
+              ref={setMap}
             >
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -135,7 +136,7 @@ const DengueMapComponent = () => {
                   <Marker 
                     key={index} 
                     position={[spot.lat, spot.lng]}
-                    icon={iconInstance as L.Icon}
+                    icon={iconInstance}
                   >
                     <Popup>
                       <div className="p-1">
